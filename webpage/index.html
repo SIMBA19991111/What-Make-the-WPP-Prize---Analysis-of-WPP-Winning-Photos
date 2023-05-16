@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What Make a Prize</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <!-- jQuery 库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JavaScript 代码 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+
+    <style>
+    @font-face {
+    font-family: 'Hanson';
+    src: url('../fonts/Hanson.ttf') format('truetype');
+    }
+
+    .bd-example {
+    position: relative; /* 让 .bd-example 元素成为相对定位的容器 */
+    z-index: 1; /* 设置 .bd-example 元素的层级为 1 */
+    }
+    .news-app-header {
+    position: relative; /* 让 .news-app-header 和 .text-overlay 元素成为绝对定位的元素 */
+    z-index: 3; /* 设置 .news-app-header 和 .text-overlay 元素的层级为 2，高于 .bd-example 元素 */
+    }
+    .text-overlay {
+ /* 让 .news-app-header 和 .text-overlay 元素成为绝对定位的元素 */
+    z-index: 2; /* 设置 .news-app-header 和 .text-overlay 元素的层级为 2，高于 .bd-example 元素 */
+    }
+    .news-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            z-index: 9999;
+            text-align: center;
+            opacity: 0.95;
+    }
+    a {
+        color: rgb(148, 5, 5);
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .text-overlay {
+    position: absolute; /* 文本位置相对于父元素 */
+    top: 25%; /* 将文本置于图片中央 */
+    left: 30%;
+    transform: translate(-40%, -30%);
+    }
+
+    .container {
+        max-width: 900px; /* 调整为适当的宽度值 */
+        margin: 0 auto; /* 水平居中 */
+    }
+    #first-letter::first-letter {
+    initial-letter: 2;
+    padding-right: 10px;
+    color: rgb(179, 4, 4);
+    }
+    
+
+        .text-overlay h3 {
+        font-size: 2vw;
+        margin: 0;
+        line-height: 1.5;
+        color: #fff; /* 文本颜色 */
+        font-size: 100%; /* 文本字体大小 */
+        }
+        
+        .text-overlay h2 {
+        color: #fff; /* 文本颜色 */
+        font-size: 500%; /* 文本字体大小 */
+        transition: color 2s ease; 
+        }
+
+
+        .text-container {
+        position: relative;
+        display: inline-block;
+        }
+
+        #breathe-heading {
+        font-family: 'Hanson', Arial, sans-serif;
+        position: relative;
+        top: 7rem;
+        left: 1rem;
+        color: rgb(255, 255, 255);
+        animation: breathe 3s ease-in-out infinite;
+        }
+
+        p {
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        .header-img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        max-width: 120%;
+        max-height: 120%;
+        z-index: -1;
+    }
+    a1 {
+        color: rgb(200, 5, 5);
+        font-weight: bold;
+    }
+
+
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            background-color: #ffffff;
+            height: 1500px;
+        }
+        h1 {
+            color: rgb(255, 255, 255);     
+        }             
+        .small-gray-text {
+            font-size: 0.8rem;
+            color: gray;
+        }
+        p {
+            font-size: 1.2rem;
+            font-family:Georgia, serif;
+        }
+        h3 {
+            color: white;  
+            padding-top: 8rem;
+            height: 2%; /* or adjust to desired distance */
+            font-size: 1.5rem;
+            line-height: 2;
+            position: relative;
+            top: 8rem;
+            left: 1rem;
+        }
+        .news-app-header h1{
+            order: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background-color: rgb(0, 0, 0);
+            z-index: 999;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            padding-top: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h3, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h6{
+            margin-top: 5px;
+            font-style: italic;
+            color: rgb(129, 128, 128); 
+            font-size: 0.7rem;
+        }    
+
+        .card-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        h4 {
+            font-size: 3rem;
+        }
+        .form-select {
+            width: 250px; 
+            font-size: 0.9rem;
+        }
+        a:hover,a:focus {
+        color: #0085a1;
+        }
+
+        a img:hover,
+        a img:focus {
+        cursor: zoom-in;
+        }
+    @media only screen and (max-width: 600px) {    
+    .text-overlay {
+    position: absolute; /* 文本位置相对于父元素 */
+    top: 20%; /* 将文本置于图片中央 */
+    left: 30%;
+    transform: translate(-40%, -50%);
+    }
+    .text-overlay h2 {
+        color: #fff; /* 文本颜色 */
+        font-size: 250%; /* 文本字体大小 */
+        transition: color 2s ease; 
+        }    
+    } 
+    ::selection {
+    color: #fff;
+    background-color: rgb(170, 3, 31);
+    }
+    
+
+    </style>
+</head>
+<body>
+    <button id="openPopup"></button>
+    <div class="popup" id="popup">
+      <p style="margin-top: 120px;">The content may contain graphic or violent material that is not suitable for children.<br>Viewer discretion is advised.<br>特别提醒，该内容可能包含儿童不宜的图像或暴力内容。<br><br><br>To ensure optimal display quality, we highly recommend viewing our content on a computer device.<br>为确保最佳的显示效果，我们强烈建议您在电脑设备上查看我们的内容。</p>
+      <button id="closePopup" style="margin-top: 120px;">I understand</button>
+    </div>
+        <div class="news-app-header">
+            <h1>THE LORD OF SHAM SHUI PO AIDM-7410 GROUP PROJECT</h1>
+        </div>
+        <div class="text-overlay">  
+            <h2><img src="header1.png" class="header-img"></h2>   
+            <h2><img src="header2.png" style="max-width:60%;margin-top:30%;margin-left: 6%" ></h2> 
+        </div>
+
+        <div class="bd-example">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="300">
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://www.worldpressphoto.org/getmedia/aae5f5c5-bae0-440f-a9e6-b846ee09df79/2014-John-Stanmeyer-CI1?maxsidesize=1920&resizemode=force%27)%20no-repeat%20center/cover" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item active">
+                <img src="https://www.worldpressphoto.org/getmedia/dda472dc-649d-4bb6-ac07-c6a223f152b4/WPP-2023Contest-South-America-STO-Alessandro-Cinque-01.jpg?maxsidesize=1920&resizemode=force%27)%20no-repeat%20center/cover" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="https://www.worldpressphoto.org/getmedia/353f7596-eba3-4d77-b6c4-ca0612933329/WPP-2023Contest-POY-Evgeniy-Maloletka.jpg?maxsidesize=1920&resizemode=force" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="https://www.worldpressphoto.org/getmedia/0ee7792a-0f75-49ba-ac4a-d63f21048486/WPP_2022Contest_LTPA_Lalo-de-Almeida_AAD.jpg?maxsidesize=1920&resizemode=force" class="d-block w-100" alt="...">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="all-item">    
+        <section class="title1" id="section1">
+            <div class="container">
+                <p style="margin-top: 60px;" id="first-letter">On April 20, the final winners of the 2023 annual World Press Photo Awards were officially announced. 
+                    24 winners and 6 honorable mentions continue to call attention 
+                    to the world's major issues in 2022 with their cameras in hand.
+                    </p>
+                    <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                        <img src="https://www.worldpressphoto.org/getmedia/e4e0b437-06e2-4c51-8602-cd04bc478532/2023-Contest_social-card_global-winners_ALL-PROJECTS_NO-LOGO.jpg?maxsidesize=900&resizemode=force
+                        " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                    </div>
+                    <p style="margin-top: 50px;">Since the day of its invention, the primary purpose of photography, 
+                        before it was referred to as <a1>"the Art Between Lights and Shadows"</a1>, 
+                        was to record. Throughout the hundred-year history of photography, 
+                        there have been countless historical moments captured, which not only 
+                        delivered impressive pictures, but also told stories that were real and soul-shaking.
+                        There is a well-recognized proper noun for them: <a1>news photography</a1></p> 
+                    <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                        <img src="https://www.worldpressphoto.org/getmedia/707638b1-878e-41c0-b726-b173bb2c266f/1981-Mike-Wells-GN1-(1)?maxsidesize=1920&resizemode=force
+                        " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;display: flex;justify-content: center;align-items: center;">
+                    </div>   
+                    <h6>The hand of a severely malnourished boy is held in the hand of a Catholic monk in the Karamoja district of northeastern Uganda <br> by Mike Wells, 1981 WPP News Photo Award of the year
+                    </h6>
+                <p style="margin-top: 50px;">Numerous photographers also established themselves as news reporters. In addition to merely capturing news events, they also managed to infuse their work with heart-touching artistic excellence. Causatively, many prestigious awards for journalistic photography were established to promote their contribution, while gaining their own worldwide recognition of professionalism. Many tempting titles among photographers are included:<br><br> Pulitzer Prize for Photography, Pictures of the Year International(POYi), International Photography Awards (IPA),
+                    and of course, the most esteemed one of all: <br><br><a1>World Press Photos, known as WPP</a1>
+                    </p>
+                    <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                        <img src="https://www.worldpressphoto.org/getmedia/4b30a4c5-9156-4981-a2a4-a25bfa19681a/1973-Nick-Ut-SN1?maxsidesize=1920&resizemode=force
+                        " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                    </div>
+                    <h6>Phan Thi Kim Phuc (center) flees with other children after South Vietnamese planes mistakenly dropped napalm on South Vietnamese troops and civilians.By Nick Ut ,1973 WPP News Photo Award of the year
+                    </h6>
+
+                    <p style="margin-top: 40px;">At its first launch in 1955, 42 photographers from 11 countries submitted just over 300 photographs to WPP.
+                        Just in the following year, the number of participants had already quadrupled, 
+                        and the number of nationalities had doubled. After nearly 
+                        seven decades of growth, as the number of entries had grown tremendously to <a1>60,000</a1>, 
+                        submitted by <a1>3,752</a1> photographers from <a1>127</a1> countries in 2023, WPP has long been one of the 
+                        world's most important and influential photojournalism competitions, with many of the 
+                        most renowned news photographs in the history as WPP's Photo of the Year. <br><br> These WPP-wining 
+                        works hold a shared legacy of both documented events and photojournalism, while WPP has 
+                        also played a crucial role in their recognition and dissemination. With its far-reaching influence, 
+                        WPP can be able to impact the creation and documentation of photojournalism worldwide through its tastes, 
+                        ultimately shaping the evolution of the field. 
+
+                       </p>
+
+            
+
+                        <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                            <img src="https://www.worldpressphoto.org/getmedia/7ce98524-6c84-4601-b073-06f9a0e0c155/1955-Mogens-von-Haven-WY?maxsidesize=1920&resizemode=force
+                            " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                        </div>
+                        <h6>The first award-winning photograph in the history of WPP ,1955 ,by MOGENS VON HAVEN
+                        </h6>
+                        <p style="margin-top: 50px;">Outside the light of its professional influence, 
+                            doubts and criticisms were continuous as well. 
+                            Some argue that WPP's photo selection has become 
+                            monotonous and lacking in creativity, with a growing 
+                            tendency towards stereotypical choices, 
+                            which can be exemplified by their overreliance on black 
+                            and white photography, viewed as indicative of this foundation's 
+                            increasingly predictable artistic taste. Additionally, 
+                            one of the most common criticisms indicates repetitive keywords like <a1>"protest"</a1> and <a1>"conflict"</a1>
+                             among numerous news topics, leading some to compare it to an award-winning "shortcut". 
+                             <br><br>More to that, the most serious accusation concerns racial diversity: 
+                             in 2021, only 7% of participants came from South America, 5% from Southeast Asia and Oceania,
+                              and just 3% from Africa. Despite this lack of 
+                              representation among participants, countless award-winning 
+                              works are still shot year by year in these regions, whose initiative
+                               to tell own stories seem to be missing from their hands.
+
+                        </p>  
+                        <p style="margin-top: 40px;">
+                            As the leading authority in photojournalism, WPP has already been highly regarded by photographers worldwide. However, these kinds of skeptical voices have doubtlessly cast shadow on its reputation. <br><br><a1>The question remains:</a1><br>
+                            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: rgb(167, 5, 5); margin-right: 5px;"></span> how much of these skepticisms are warranted? <br>
+                            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: rgb(167, 5, 5); margin-right: 5px;"></span> The ‘shortcut’ to the Photo of the Year really exists? <br>
+                            <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: rgb(167, 5, 5); margin-right: 5px;"></span> What does it take to win a WPP?<br><br>
+                            To answer these questions, we have collected and analyzed <a1>2,880</a1> entries and over <a1>12,800</a1> photos from all WPP awards since 1955, along with examination on descriptions of these award-winning photos and information about the photographers published on the official WPP website. 
+                            </p>
+                        <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                            <img src="0001.png" alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                        </div> 
+                        <p style="margin-top: 50px;">
+                            Our goal was to identify trends and characteristics of 
+                            WPP awards both externally and internally, 
+                            strive to demonstrate the overall criteria and taste of 
+                            WPP awards (and their trends), 
+                            and ultimately tend to acquire the answer and a 
+                            guidance for you who are interested:
+                        </p>
+                        <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 80px;">WHAT MAKES A PRIZE IN COMPETITIONS?<br><br>PART 1:<br>IN TERMS OF <a style="color: rgb(186, 1, 1);">COLORS<a></h4>  
+                <p style="margin-top: 30px;">We kick off with appetizer, 
+                    the basic element of photos: color.<br><br> 
+                    The first color photographic technique has long been invented by Maxwell 
+                    from England in the middle of 19th century, 
+                    and the portable and practical color photography 
+                    technology has been invented by Kodak and Polaroid in 1930s as well. 
+                    With modern thinking, it's easy to think that color 
+                    photography should have been the norm since then.<br><br> 
+                    Yet on the very contrary to today’s common custom, 
+                    it was long considered frivolous and vulgar at its first emergence from 1950s, 
+                    and was not seen as a formal medium for serious photographers, but rather 
+                    more used by their more advertisers and commercial peers. 
+                    It can be indicated by quote from famous 
+                    photographer Walker Evans:<br><br></p>
+                    <div style="text-align: center;width: 100%; height: 80%;  display: flex; justify-content: center; align-items: center;">
+                        <img src="c1.png
+                        " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                    </div>    
+                    <p>
+                    <br><br>As for the representative of the general view of press photographers, WPP, its tendency regarding this issue was also unapologetic: <br><br>it wasn't until 1965, its 10th year, that the <a1>first color photo</a1> finally appeared in WPP. 
+                    </p>
+                    <div style="text-align: center;width: 100%; height: 80%; border: 1px solid black; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                        <img src="https://www.worldpressphoto.org/getmedia/825c7928-b0bb-41f6-adaa-bd724ec75f01/1965-Erich-Baumann-SP1-(1)?maxsidesize=1920&resizemode=force
+                        " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                    </div>
+                    <h6>The frist color photo. The Formula One drivers experience a rainy start of the 14th Solitude Grand Prix at the Solitudering in Stuttgart, <br>by Erich Baumann, 1965 2008 WPP News Photo Award.
+                    </h6>	
+                    <p style="margin-top: 40px;">This taste with differentiation from WPP 
+                        and its participants is public and long-term. For an instance, 
+                        a category was established specifically for color pictures, 
+                        for 9 times out of 68, meaning that color 
+                        photos are more likely to be subject to 
+                        inconsistent review standards compared with other 
+                        photos in these years, thus affecting their 
+                        chances of winning other prizes.<br><br> 
+                        For a more explicit interpretation, 
+                        we extracted the <a1>5 most dominant colors</a1> 
+                        of every WPP wining picture since the appearance of 
+                        color photo award, only to explicitly found that, 
+                        even till this very year, long after the digitalized technology outburst,
+                            a great number of photos are still featuring black and white, 
+                            with an annual-steady proportion.
+                        </p>
+                        <div class="flourish-embed flourish-photo-slider" data-src="visualisation/13578636" style="margin-top: 40px;">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script></div>
+                        
+                        <p style="margin-top: 40px;">
+                            With a range of advantages such as subject highlighting, 
+                            atmosphere creation, detail enhancement, 
+                            and contrast accentuation, preference for black and white photos 
+                            is common within photographers’ world, so photojournalists and their 
+                            representatives at WPP are naturally not exempt from it.<br><br> 
+                            That being said, after the legendary and historic color 
+                            photographic exhibition of William Eggleston’s works held in 1976, 
+                            the importance of color in the storytelling and artistic expression 
+                            of photography had gradually been acknowledged within the photographic 
+                            community, especially for the emotional expression value of certain colors.<br><br> 
+                            Specifically, for WPP, looking back again at our extracted color palettes, 
+                            we can also spot certain amount of colorfulness, especially represented by 
+                            warmer orange and cooler blue. These award-winning photographs of color 
+                            expression in warm and cool tones are, without exception, textbook-level 
+                            demonstrations of the use of color in photography: <a1>use warmer color for a more 
+                            passionate emotional release, and cooler color for a calmer narrative style.</a1> 
+                            It can be established that even in news photography that demands a higher 
+                            requirement for documentary, the good use of color emotions is also a major 
+                            bonus point for photos.
+                            </p>
+                            <div style="display:flex;justify-content:center;margin-top: 40px;">
+                        <img src="orange.png" alt="Image 1" style="width:85%;">
+                        <img src="blue.png" alt="Image 2" style="width:85%;">
+                      </div>
+                        </div>
+        <div class="all-item2">    
+        <section class="title1" id="section1">
+            <p style="text-align:center;font-size: medium;">Photographic Examples of <a style="color: orangered;font-weight: bold;">Warmer</a> and <a style="color: blue;font-weight: bold;">Cooler</a> Color Tones</p>
+            <div class="container" style="margin-top: 80px;">
+            <p>That said, the longevity of color preferences can still 
+                reflect a dangerous bias that has long been warned about 
+                in WPP and the photojournalism community, as long 
+                been indicated, quote “Media impoverishment of aesthetic 
+                criteria and the conceptual contempt for the image as a form 
+                of thought”.In short, even with the latest digital technology, 
+                photojournalism is still facing the bottlenecks of 
+                creativity, which has been recognized by WPP, who 
+                had been embracing an increasingly open attitude 
+                towards new forms of media works, and even recently 
+                introduced a new category ‘Open Format’ from 2022 for 
+                specific promotion. In spite of rising debates towards 
+                this trend, WPP's proactive approach itself to media boundary 
+                exploration still won wide approval.
+            </p>
+            <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 80px;">WHAT MAKES A PRIZE IN WPP COMPETITIONS?<br><br>PART 2:<br>IN TERMS OF <a style="color: rgb(186, 1, 1);">STORIES<a></h4>  
+            <p style="margin-top:30px;">Apart from its superficial artistry like color, 
+                as mentioned at the beginning, photography was initially 
+                invented to capture and preserve, in the form of intuitive 
+                visual impact, those precious moments in history that words alone 
+                cannot fully convey. Through decades, as the well-recognized pioneer 
+                and beacon of photojournalism, WPP contributed to countless 
+                historic photographic coverages of events that shaped our world, 
+                as this institution claims themselves,
+            </p>
+            <div style="text-align: center;width: 100%; height: 80%;  display: flex; justify-content: center; align-items: center;">
+                <img src="c2.png
+                " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+            </div> 
+            <p style="margin-top:50px;">Those stories, unfortunately, have been 
+                referred to being a bit homogeneous in many eyes. 
+                Voices of controversy have never ceased, 
+                expressing frustration and aesthetic fatigue of endless
+                 ‘conflict’ and ‘protest’ main themes of WPP’s choices 
+                 of award, claiming that each year’s wining 
+                 photos are almost never-ending relevant to these kinds 
+                 of keywords while many other important issue topics are being 
+                 ignored. To make matters worse, there are more and more unsavory 
+                 speculations accusing that WPP’s this kind of favor might 
+                 encourage photographers to chase or deliberately amplify the
+                  conflict, in exchange of attention and recognition for themselves.
+            </p>
+            <p>To find out with an illustrative example, 
+                with the help of AI sequential models,
+                 we have summarized and categorized all 
+                 the major news award-winning photos from 1955 to the present, 
+                 and picked out those about <a1>protest / domestic</a1> conflict, 
+                 to see that if WPP are truly biased or preferred regarding this theme.
+            </p>
+            </div>
+            </section>
+        </div> 
+<iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1m7tsfWqDkvwMfe0MtpOC20ee8x9IsK9aRWW3MP0gZ1Q&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0' style="display:flex;justify-content:center;margin-top:50px;"></iframe>
+        <div class="all-item2">    
+            <section class="title1" id="section1">
+                <div class="container" >
+                    <h6>
+                        *Filtering Measures: we utilized the Oxford Dictionary to manually screen story descriptions of award-winning works, 
+                        which contains highly tolerant associated words, which can be categorized into marginal and central meanings, 
+                        including marginal words “police/parade/march/rally”, and central words including “protest/demonstration/protestors/riot”. 
+                        <br><br>After this process, we obtained 456 relevant stories (including duplicates) which were further screened 
+                        manually to obtain 104 most representative rows. In selecting the most representative photo for group projects 
+                        in that year, we retained only the highest award received by a particular work.<br><br>Due to the lengthy introductions of some stories, we have utilized the Flan-T5 model to assist in summarizing the plot, greatly reducing
+                         the time required for manual summarization and placing the content(partially) into the timeline.
+
+                    </h6>
+                    <p style="margin-top: 60px;">
+                        From the timeline above, 
+                        it is able to conclude that in its 68-year history, 
+                        ‘protest’-related works accounted for 47 years as 69% of the total. 
+                        <br><br>Especially since 1981, at least one work notably mentioning 
+                        protest has been produced each year. This kind of sustained attention to 
+                        ‘protest/conflict’, maybe in addition to "war", 
+                        is highly unique in WPP's history in terms of recurring themes, 
+                        which explicitly demonstrates its value.<br><br>However, it is still unclear 
+                        whether ‘protest’-related works are more likely to win awards.<br><br>
+                        To find out, we analyzed award distribution, only to find out that winning 
+                        probabilities were relatively equal across different categories 
+                        (first prize, second prize, and third prize), hovering around 30%.<br><br> 
+                        <a1>Therefore, there is no evidence to support the claim that WPP 
+                        gives a higher probability of winning an award on this theme.</a1>
+
+                        </p>
+
+                        <div class="flourish-embed flourish-chart" data-src="visualisation/13718113">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script></div>    
+
+                        <p style="margin-top: 50px;">
+                        Protest, along with conflict and war, is 
+                        long recognized as one of the eternal themes 
+                        within human societies, which is always the most direct manifestation 
+                        of social contradictions at the peak of relevant regions. 
+                        Arrogant aesthetic fatigue from a condescending bystander 
+                        will foster indifference towards civilians who suffer in conflicts 
+                        in person and undermine their right to attention. Thus, continuous 
+                        attention and exposure to such issues should of course be of great 
+                        importance without doubt. <br><br><a1>However, during our exploration, 
+                        we have identified a long-standing flaw in the WPP 
+                        and the whole photojournalism.</a1> Often, these types of 
+                        controversial events are presented from incomplete perspectives,
+                         resulting in <a1>partial or biased</a1> presentations, 
+                         on the very contrary to news professionalism. 
+                         <br><br>We hope that WPP will adopt a more comprehensive 
+                         and unbiased journalistic approach through these works, 
+                         particularly when dealing with intricate and contentious 
+                         topics, which entails, instead of mere attention-grabbing 
+                         visuals, considering all relevant aspects of the issue at hand.
+                        </p>
+                        <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 60px;">WHAT MAKES A PRIZE IN WPP COMPETITIONS?<br><br>PART 3:<br>IN TERMS OF <a style="color: rgb(186, 1, 1);">PHOTOGRAPHERS<a></h4> 
+                        <p style="margin-top: 60px;">The more impressive a story or picture is, 
+                            the more credit is given to the photographer. 
+                            Along with the world-famous photo stories that have 
+                            become legendary because of WPP, 
+                            are the photojournalists who captured them.
+                            Eddie Adams,James Nachtwey,Anthony Suau… <br><br>These now world-renowned 
+                             photojournalists have all achieved global success 
+                             and recognition through their participation in WPP, 
+                             which once again demonstrates its unshakeable recognition. 
+                             Some of whom were even awarded more than once, as the chart will show below.</p>
+                             <div class="flourish-embed flourish-bubble-chart" data-src="visualisation/13714475">
+                                <script src="https://public.flourish.studio/resources/embed.js"></script></div>  
+                        <p><br><br>
+                            <a1>Spot anything reasonable but unconscionable yet?</a1>
+                            <br><br> 
+                            Among those who won the most WPP awards, all 
+                            of the award-winning photographers are white and 
+                            most of them from western countries such as the United 
+                            States and the Netherlands. We’ve come to one of the fiercest 
+                            controversies regarding WPP: even under the impression of 
+                            its global status and recognition, 
+                            it has never been this hard to ignore the fact that it is an 
+                            institution mainly located in Netherlands, one of the most traditionally 
+                            recognized European countries as there are.
+                            <br><br>To further explore this problem, 
+                            we have compiled the distribution of the 
+                            nationalities of the WPP winning photographers of all time:
+                        </p>
+                        <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/13708702" data-width="90%">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script></div>
+                        <p>
+                            As illustrated above, 
+                            in the top 10 countries with the highest 
+                            distribution of photographer nationalities, 
+                            7 of them are from Europe, 2 of them are form 
+                            North America, one, which also features long-term 
+                            tradition as a white country, is from Oceania.
+                             The highest country outside of the 3 most distributed continents is South Africa, 
+                             which also has an all-white distribution of photographers, 
+                             followed by Argentina with a white population over 95%. 
+                             The highest country with a predominantly non-white populations is Japan, 
+                             with an overall 19 awards, far from the top 10 boundaries of 30.
+                             <br><br>Given the data we collected, it’s no wonder that the <a1>white supremacy</a1> has long been one of the most crucial
+                              controversies around WPP, who had also been accused of <a1>'Structural Racism'</a1>.
+                            </p>
+                        <div style="text-align: center;width: 100%; height: 80%;  display: flex; justify-content: center; align-items: center;">
+                            <img src="c3.png
+                            " alt="Your Image" style="max-width: 100%; max-height: 100%; display: block; margin: auto;">
+                        </div> 
+                        <p style="margin-top: 50px;">    
+                        After facing significant media scrutiny in 2020, WPP has claimed theirselves 
+                        to be taking steps to address the situation. An International Advisory 
+                        Committee, which will provide guidance on WPP's globalization strategy 
+                        going forward, has been established in addition to its Supervisory Board 
+                        which is still predominantly composed of white. With the emerging rule only 
+                        in effect for two tournaments, its practical effect remains to be seen.</p> 
+                        <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 80px;">
+                            WHAT MAKES A PRIZE IN WPP COMPETITIONS?<br><br>PART 4:<br>IN TERMS OF <a style="color: rgb(186, 1, 1);"><br>COUNTRIES / REGIONS<a></h4>  
+                        <p style="margin-top: 50px;"> 
+                            The controversy about the nationality of the photographer 
+                            in the previous chapter, in fact, still has more potential 
+                            contexts to be explored. It only takes a superficial reflection 
+                            to see yet another great controversy: compared to the nationalities 
+                            of award-winning photographers with a large deviation distribution, 
+                            many countries that have never appeared in the former seem to always 
+                            be represented in the winning works, most of which were commonly linked 
+                            to the usual topics emerging in award winning stories: <a1>war, poverty, conflict.</a1>
+                            <br><br>For further exploration, with the help of AI sequential model, we extracted the exact 
+                            location where each photo was taken from its official description, 
+                            if possible, and connect them to the photographer’s nationalities.</p>
+                        <div class="flourish-embed flourish-globe" data-src="visualisation/13601500" style="margin-top: 50px;">
+                            <script src="https://public.flourish.studio/resources/embed.js"></script></div>
+                            <h6>*We performed the information extraction task using the UIE-Base model
+                                 and extracted all the shooting locations with the help of 
+                                 Spacy and PyCountry libraries (if possible)</h6>        
+
+                        <p>Nearly 60% of the photos were taken in areas outside of the photographers' 
+                            own nationalities, with only 40% being shot in their home countries.<br><br> 
+                            Among the photographers who went abroad, we can see that most of them 
+                            traveled from the United States to other countries. 
+                            Vietnam, Iraq and Afghanistan are their most common destinations, which makes 
+                            it conceivable that war and conflict will be the predominant themes in these 
+                            photos they took. <br><br> In contrast, photographers from underdeveloped area rarely go overseas, 
+                            such as African country photographers who mostly reside in relatively developed white 
+                            communities like South Africa. <a1>In general, the inequality of regional storytelling
+                             rights is perfectly manifested.</a1>
+
+
+                        <p>Regardless of the subjective intentions behind these photographers 
+                            leaving their homeland and coming to foreign lands to capture these 
+                            stories, there should never been doubt that their photography had
+                             played a positive role in exposing local social issues. <br><br>However, one of the simplest 
+                             truths remains intact: no matter how hard outsiders try, the ones that can better deliver stories 
+                             of own hometowns are always locals. The guarantee of the opportunity to tell the story around 
+                             oneself is also due to the most essential journalistic professional requirements, which is the 
+                             pursuit of the highest level of truthfulness and reversibility.
+
+                            </p> 
+                        <p>It can be seen, again after the concentrated media 
+                            blasts in 2020, that WPP has taken some measures 
+                            regarding this issue. 
+                            In 2021, the institution <a1>announced changes to its organizational structure</a1>
+                                 by introducing regions as a primary category, 
+                                 stipulated that photographers from different regions should 
+                                 compete in separate divisions representing their own regions. 
+                                 <br><br><a1>This has been seen as a move to balance regional biases.</a1><br><br>
+                                 Two new editions have already been held under renewed regulation in 2022 
+                                 and 2023, in which the work of photographers from some of 
+                                 the long-neglected regions can finally be appreciated. 
+                                 Although accompanied by controversy over the differential treatment, 
+                                 these initiatives by WPP have been proved effective in increasing the 
+                                 visibility of photographers' work in specific regions.
+
+                            </p>
+                        <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 80px; color: rgb(150, 0, 0)">CONCLUSION</h4>
+                        <p style="margin-top: 40px;">Following an explicit logical thread - from the photos themselves, 
+                            to the content of the stories they carry, 
+                            to the photographers who took them, 
+                            and the ways and places they were taken - our process of exploration finally came to some conclusion.
+                            </p>
+                        <p>For preference, it is evidently shown in WPP's choice of awards, 
+                            which can be demonstrated in both terms of forms and stories. 
+                            <br><br>Take some examples: a particular preference for black and white or strong color expressions, 
+                            and an ongoing focus on stories about specific themes, such as 'protest' and 'war'. 
+                            There is no evidence, however, that WPP's preference for these attributes goes 
+                            beyond general aesthetic and professional journalistic intuition, 
+                            and becomes unfairly biased toward them. Specific choices of topics may 
+                            increase exposure, but there is no proof that this will improve the chances of getting a 
+                            higher prize. Hence, it is really hard to prove that there are any shortcuts to winning in these dimensions.</p>
+                            <p><a1>In other dimensions, however,'shortcuts' are just 
+                                too hard to ignore.</a1> As an institution that prides 
+                                itself on its global reach and world perspective, its history of strong racial deviance 
+                                cries otherwise. The disproportionate number of awards won by white 
+                                individuals highlights the ongoing problem of racial inequality in both cultural and 
+                                economic spheres worldwide, which is also evident within the field of news photography.
+                                 Although WPP has begun to remedy this kind of <a1>"structural racism"</a1>,
+                                 its reflection of a clear regional bias in global photojournalism still warrants alarm and urgent correction.</p>
+                            <p>As one of the most important news recording vehicles and art forms today, 
+                            the connotations and trends faced by photojournalism are 
+                            becoming more complex and varied than ever. Although it 
+                            is not possible to be truly global and unbiased at this stage, 
+                            WPP remains the best player in the role of worldwid leader in photojournalism 
+                            development. </p>
+                            <h4 style="font-family: Arial, serif; font-weight: 900;margin-top: 80px; color: rgb(150, 0, 0)">Whether WPP will be able to better fulfill its role as a global 
+                                photojournalism guide in the future, remains to be seen.</h4>
+
+                        <h4 style="font-family: Arial, serif; font-weight: 700;margin-top: 80px; color: rgb(54, 54, 54);font-size: x-large;">Main References</h4>   
+
+                        <p>
+                        [1] <a href="https://www.worldpressphoto.org/news/2021/new-contest-model" target="_blank">World Press Photo Foundation (2021). Shifting to a regional model for the annual World Press Photo Contest. World Press Photo. </a>
+                        <br>
+                        [2] <a href="https://www.outdoorphotographer.com/black-and-white-nature-photography/" target="_blank">Bradley, J. (2018). Black-and-White Nature Photography. Outdoor Photographer. </a>
+                        <br>
+                        [3] <a href="https://www.nytimes.com/2016/10/23/t-magazine/william-eggleston-interview.html" target="_blank">Burroughs, A. (2016, October 17). William Eggleston, the Pioneer of Color Photography. New York Times: T Magazine. </a>
+                        <br>
+                        [4] <a href="https://doi.org/10.1017/CBO9781107337930" target="https://www.theartnewspaper.com/2020/07/29/world-press-photowhich-has-all-white-supervisory-boardaccused-of-structural-racism">Elliot, A., Fairchild, M., & Franklin, A. (Eds.). (2015). Handbook of Color Psychology (Cambridge Handbooks in Psychology). Cambridge: Cambridge University Press. </a>
+                        <br>
+                        [5] <a href="https://www.theartnewspaper.com/2020/07/29/world-press-photowhich-has-all-white-supervisory-boardaccused-of-structural-racism" target="_blank">Seymour, T. (2020, July 29). World Press Photo—which has all-white supervisory board—accused of structural racism. The Art Newspaper.</a>
+                        <br>
+                        [6] <a href="https://github.com/PaddlePaddle/PaddleNLP" target="_blank">PaddleNLP Contributors. (2021). PaddleNLP: An Easy-to-use and High Performance NLP Library. </a>
+                        <br>
+                        [7] <a href="https://doi.org/10.48550/arXiv.2203.12277" target="_blank">Lu, Y., Liu, Q., Dai, D., Xiao, X., Lin, H., Han, X., Sun, L., & Wu, H. (2022). Unified Structure Generation for Universal Information Extraction. arXiv preprint arXiv:2203.12277.</a>
+                        <br>
+                        [8] <a>Lloyd, Stuart P. "Least squares quantization in PCM." Information Theory, IEEE Transactions on 28.2 (1982): 129-137.</a>
+                        <br>
+                        </p>
+
+                        <h4 style="font-family: Arial, serif; font-weight: 700;margin-top: 80px; color: rgb(54, 54, 54);font-size: x-large;">Website style reference</h4>
+                        
+                        <p>
+                            [1] <a href="https://www.theguardian.com/artanddesign/gallery/2023/apr/14/six-raccoons-sony-world-photography-awards-2023-in-pictures" target="_blank">The Guardian</a>
+                        </br>[2] <a href="https://www.vice.com/en" target="_blank">Vice</a>
+                        <br><br><br></p>    
+                        <h4 style="font-family: Arial, serif; font-weight: 700;margin-top: 30px; color: rgb(54, 54, 54);font-size: x-large;">Github Link</h4>
+                             <a href="https://github.com/KIDult2226/AIDM-7410" target="_blank">Github Link</a>
+
+                        
+
+                    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-lZuD+vpdJwNkBlrrTQeiiI1+H/NoeztRnDdNzAkZM+MpIb8m7Jit+iTZ+H4l4u4t" crossorigin="anonymous"></script>
+<script>
+    function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+    }
+    const openBtn = document.getElementById('openPopup');
+    const closeBtn = document.getElementById('closePopup');
+    const popup = document.getElementById('popup');
+      
+      openBtn.addEventListener('click', function() {
+        popup.style.display = 'block';
+      });
+      
+      closeBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+      });
+    window.addEventListener("scroll", function() {
+    var h3 = document.querySelector("h3");
+    var scrollPosition = window.scrollY;
+    var opacity = Math.max(0, 1 - (scrollPosition / (window.innerHeight * 0.75)));
+    img.style.opacity = opacity; /* 设置透明度 */
+    h3.style.opacity = opacity; /* 设置透明度 */
+    });
+</script>
+<script>
+  // 初始化轮播图
+  $(document).ready(function() {
+    $('.carousel').carousel();
+  });
+</script>
